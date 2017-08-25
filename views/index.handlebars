@@ -1,0 +1,39 @@
+<div class="container">
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+	    	<!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    	<ul class="nav navbar-nav">
+		        	<li><a href="/">Home</a></li>
+		        	<li><a href="/saved-articles">Saved Articles</a></li>
+		        	<li><button id="scrape-btn" class="btn btn-primary navbar-btn">Scrape New Articles!</button> </li>
+		      	</ul>
+		    </div><!-- /.navbar-collapse -->
+	  	</div><!-- /.container-fluid -->
+	</nav>
+
+	<div class="jumbotron">
+		<h1>Mongo Scraper</h1>
+	  	<p>ESPNFC EDITION</p>
+	</div>
+
+	<div>
+		<div class="panel panel-default">
+			<div class="panel-body">
+				No articles
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+	    	<span class="close">&times;</span>
+	    	<p id="new-articles-number"></p>
+	  	</div>
+	</div>
+
+</div>
+
+<script type="text/javascript" src="/assets/js/logic.js"></script>

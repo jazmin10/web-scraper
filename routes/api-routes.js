@@ -6,14 +6,28 @@ var cheerio = require("cheerio");
 var Comment = require("../models/Comment.js");
 var Article = require("../models/Article.js");
 
+// function finished(createRes, counter){
+// 	console.log(counter)
+// 	createRes.end()
+// }
+
 module.exports = function(app){
 
-	// Grab unsaved articles
-	app.get("/unsaved-articles", function(readReq, readRes){
+	// Grab home page with unsaved articles
+	// /unsaved-articles
+	app.get("/", function(readReq, readRes){
+		console.log("home page");
 
-		// Find query where saved property is false
+		// Find Articles where saved property is false
 		Article.find({saved: false}, function(err, unsavedDoc){
-			readRes.json(unsavedDoc);
+			// console.log("new info:" + unsavedDoc);
+			if(unsavedDoc.length === 0){
+				readRes.render("index");
+			}
+			else {
+				var unsavedObject = {articles: unsavedDoc}
+				readRes.render("unsaved", unsavedObject);
+			}
 		});
 	});
 
@@ -22,12 +36,15 @@ module.exports = function(app){
 
 		// Find query where saved property is true
 		Article.find({saved: true}, function(err, savedDoc){
-			readRes.json(savedDoc);
+			var savedObject = {articles: savedDoc}
+			readRes.render("saved", savedObject);
 		});
 	});
 
 	// Route used to scrape website
 	app.post("/scrape", function(createReq, createRes){
+
+		var counter = 0;
 
 		// Start scrape
 		request("http://www.espnfc.us/", function(error, response, html){
@@ -50,11 +67,17 @@ module.exports = function(app){
 				// Save Article information to database
 				newArticle.save(function(err, newDoc){
 					if (err) return;
+					counter++;
+					// console.log(counter);
 				});
 			});
-
-			createRes.send("Scrape is complete!");
+			
+			// console.log(counter);
+			// createRes.json({newArticles: counter});
 		});
+		// console.log(counter);
+		// createRes.json({newArticles: counter});
+		createRes.end();
 	});
 
 	// Save an article
@@ -64,7 +87,7 @@ module.exports = function(app){
 		Article.findOneAndUpdate({_id: updateReq.params.id}, {saved: true}, {new: true})
 		.exec(function(err, savedDoc){
 
-			updateRes.json(savedDoc);
+			updateRes.json(savedDoc); // perhaps change to end
 		});
 	});
 
@@ -75,7 +98,7 @@ module.exports = function(app){
 		Article.findOneAndUpdate({_id: updateReq.params.id}, {saved: false}, {new: true})
 		.exec(function(err, savedDoc){
 
-			updateRes.json(savedDoc);
+			updateRes.json(savedDoc); // perhaps change to end
 		});
 	});
 
@@ -83,13 +106,13 @@ module.exports = function(app){
 	app.post("/create-comment/:id", function(createReq, createRes){
 		// console.log(typeof(JSON.parse(createReq.body)));
 		// Create new instance of Comment Model
-		var newComment = new Comment(JSON.parse(createReq.body));
+		var newComment = new Comment(createReq.body);
 
 		// Add new comment to database
 		newComment.save(function(err, newCommentDoc){
 			if (err) throw err;
 
-			// Remove comment from article's list of comments
+			// Add comment to article's list of comments
 			Article.findOneAndUpdate({_id: createReq.params.id}, 
 				{ $push: {comments: newCommentDoc._id}}, {new: true})
 			.exec(function(error, doc){

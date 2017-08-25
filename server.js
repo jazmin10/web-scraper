@@ -22,6 +22,10 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Make public a static dir
 app.use(express.static("public"));
 
+// Set handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 // Database configuration with mongoose
 mongoose.connect("mongodb://localhost/webscraper");
 var db = mongoose.connection;

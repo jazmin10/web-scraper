@@ -6,19 +6,20 @@
 		    	<ul class="nav navbar-nav">
 		        	<li><a href="/">Home</a></li>
 		        	<li><a href="/saved-articles">Saved Articles</a></li>
+		        	<li><button id="scrape-btn" class="btn btn-primary navbar-btn">Scrape New Articles!</button> </li>
 		      	</ul>
 		    </div><!-- /.navbar-collapse -->
 	  	</div><!-- /.container-fluid -->
 	</nav>
 
 	<div class="jumbotron">
-		<h1>Saved Articles</h1>
-	  	<p>From ESPNFC</p>
+		<h1>Mongo Scraper</h1>
+	  	<p>ESPNFC EDITION</p>
 	</div>
 
 	<div>
 		{{#each articles}}
-			{{#if this.saved}}
+			{{#unless this.saved}}
 				<div class="panel panel-default" id="article-{{this._id}}">
 					<div class="panel-heading">
 						<h3 class="panel-title">{{this.title}}</h3>
@@ -27,11 +28,10 @@
 					<div class="panel-body">
 						<a href={{this.link}}>{{this.link}}</a>
 						<hr/>
-						<button class="btn btn-primary view-comments" data-id={{this._id}}>Article Comments</button>
-						<button class="btn btn-primary delete-article" data-id={{this._id}}>Delete From Saved</button>
+						<button class="btn btn-primary save-article" data-id={{this._id}}>Save Article</button>
 					</div>
 				</div>
-			{{/if}}
+			{{/unless}}
 		{{/each}}
 	</div>
 
@@ -41,17 +41,10 @@
   		<!-- Modal content -->
   		<div class="modal-content">
 		    <span class="close">&times;</span>
-		    <br>
-		    <p>Comments</p>
-		    <div id="comments">
-		    </div>
-		    <p>New Comment</p>
-		    <textarea class="form-control" rows="1"></textarea>
-		    <br>
-		    <button class="btn btn-primary add-comment">Add Comment</button>
-
+		    <p id="new-articles-number"></p>
 	  	</div>
 	</div>
+
 </div>
 
-<script type="text/javascript" src="/assets/js/logicII.js"></script>
+<script type="text/javascript" src="/assets/js/logic.js"></script>
