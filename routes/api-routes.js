@@ -16,7 +16,6 @@ module.exports = function(app){
 	// Grab home page with unsaved articles
 	// /unsaved-articles
 	app.get("/", function(readReq, readRes){
-		console.log("home page");
 
 		// Find Articles where saved property is false
 		Article.find({saved: false}, function(err, unsavedDoc){

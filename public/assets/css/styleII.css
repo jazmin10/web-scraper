@@ -1,7 +1,5 @@
 body {
-    /*background-image: url("https://ak5.picdn.net/shutterstock/videos/511618/thumb/6.jpg?i10c=img.resize(height:160)")*/
     background-image: url("https://w-dog.net/wallpapers/15/16/466716352306843/textures-turf-grass-green-green-wallpaper.jpg");
-    /*background: black;*/
 }
 
 /* The Modal (background) */
@@ -20,46 +18,12 @@ body {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: black;
+    background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-    border-color: #2e6da4;
 }
-
-    /*Scraping Complete Modal Content*/
-    #new-articles-number {
-        color: white;
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 1px;
-        text-align: center;
-        font-size: 20px;
-    }
-
-    /*Comments Modal Content*/
-    .modal-content p {
-        color: white;
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 1px;
-        font-size: 20px;
-    }
-
-    .modal-content .well {
-        color: white;
-        background: black;
-        border-color: #2e6da4;
-        font-family: 'Fjalla One', sans-serif;
-        letter-spacing: 0.5px;
-    }
-
-    .add-comment {
-        background: none;
-    }
-
-    .add-comment:hover {
-        background: none;
-    }
 
 /* The Modal Close Button */
 .close {
@@ -85,12 +49,13 @@ body {
     color: white;
     font-family: 'Anton', sans-serif;
     font-size: 40px;
-    letter-spacing: 1px; 
+    letter-spacing: 1px;
 }
 
 #title span {
     font-size: 30px;
     font-family: 'Fjalla One', sans-serif;
+    letter-spacing: 0px;
 }
 
 /* Navbar */
@@ -107,15 +72,11 @@ body {
     font-size: medium;
 }
 
-#scrape-btn {
-    background: none;
-}
-
 /* Jumbotron */
 .jumbotron {
     margin: 0;
     padding: 0;
-    background-image: url("http://coverlayout.com/facebook/covers/soccer_players/soccer_players.jpg"); 
+    background-image: url("http://coverlayout.com/facebook/covers/soccer_players/soccer_players.jpg") 
     /*padding: none;*/
 }
 
@@ -134,7 +95,6 @@ body {
     padding: 35px 0px 35px 0px;
 }
 
-
 .jumbotron h1 {
     text-align: center;
     color: white;
@@ -150,15 +110,6 @@ body {
     text-shadow: 2px 2px black;
 }
 
-/*No Articles Panel*/
-#no-articles {
-    background: black;
-    color: white;
-    border-color: #2e6da4;
-    font-family: 'Fjalla One', sans-serif;
-    font-size: 20px;
-}
-
 /*Articles Panel*/
 .outer {
     background: black;
@@ -167,12 +118,12 @@ body {
 
 .articles-panel {
     background-color: black;
-    border-color: #2e6da4;
+    border-color: #2e6da4
 }
 
 .articles-panel .panel-heading {
     background-color: black;
-    border-color: #2e6da4;
+    border-color: #2e6da4
 }
 
 hr {
@@ -199,19 +150,4 @@ a {
     background-color: black;
 }
 
-/*View Comments Button*/
-.view-comments {
-    background: none;
-}
 
-.view-comments:hover {
-    background: none;
-}
-
-.delete-article {
-    background: none;
-}
-
-.delete-article:hover {
-    background: none;
-}

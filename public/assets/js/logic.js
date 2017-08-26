@@ -9,7 +9,7 @@ $(document).ready(function(){
 			url: "/scrape"
 		})
 		.done(function(data){
-			$("#new-articles-number").html("Scrape complete!");
+			$("#new-articles-number").html("SCRAPE COMPLETE!");
 			modal.style.display = "block";
 		});
 	});

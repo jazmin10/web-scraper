@@ -62,7 +62,7 @@ $(document).ready(function(){
 				body: new_comment
 			}
 		}).done(function(data){
-			// console.log(data);
+			$("div .well").remove();
 			$("textarea").val("");
 
 			$("#comments").append("<div class='well well-sm' id='comment-"+ data._id +"'>"+ data.body +

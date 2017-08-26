@@ -1,8 +1,9 @@
 <div class="container">
+	<h1 id="title">SOCCER<span>webscraper</span></h1>
 	<nav class="navbar navbar-default">
   		<div class="container-fluid">
 	    	<!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
 		    	<ul class="nav navbar-nav">
 		        	<li><a href="/">Home</a></li>
 		        	<li><a href="/saved-articles">Saved Articles</a></li>
@@ -12,20 +13,23 @@
 	</nav>
 
 	<div class="jumbotron">
-		<h1>Saved Articles</h1>
-	  	<p>From ESPNFC</p>
+		<div>
+			<h1>SAVED ARTICLES</h1>
+	  		<p>From ESPNFC</p>
+	  	</div>
 	</div>
 
-	<div>
+	<div class="panel panel-default outer">
+	<div class="panel-body outer">
 		{{#each articles}}
 			{{#if this.saved}}
-				<div class="panel panel-default" id="article-{{this._id}}">
+				<div class="articles-panel panel panel-default" id="article-{{this._id}}">
 					<div class="panel-heading">
 						<h3 class="panel-title">{{this.title}}</h3>
 
 					</div>
 					<div class="panel-body">
-						<a href={{this.link}}>{{this.link}}</a>
+						<a href={{this.link}} target="_blank">{{this.link}}</a>
 						<hr/>
 						<button class="btn btn-primary view-comments" data-id={{this._id}}>Article Comments</button>
 						<button class="btn btn-primary delete-article" data-id={{this._id}}>Delete From Saved</button>
@@ -33,6 +37,7 @@
 				</div>
 			{{/if}}
 		{{/each}}
+	</div>
 	</div>
 
 	<!-- The Modal -->
@@ -42,15 +47,16 @@
   		<div class="modal-content">
 		    <span class="close">&times;</span>
 		    <br>
-		    <p>Comments</p>
+		    <p>COMMENTS</p>
 		    <div id="comments">
 		    </div>
-		    <p>New Comment</p>
+		    <p>NEW COMMENT:</p>
 		    <textarea class="form-control" rows="1"></textarea>
 		    <br>
 		    <button class="btn btn-primary add-comment">Add Comment</button>
 
 	  	</div>
+
 	</div>
 </div>
 

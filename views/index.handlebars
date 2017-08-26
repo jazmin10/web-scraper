@@ -1,8 +1,9 @@
 <div class="container">
+	<h1 id="title">SOCCER<span>webscraper</span></h1>
 	<nav class="navbar navbar-default">
   		<div class="container-fluid">
 	    	<!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <div class="navbar-collapse" id="bs-example-navbar-collapse-1">
 		    	<ul class="nav navbar-nav">
 		        	<li><a href="/">Home</a></li>
 		        	<li><a href="/saved-articles">Saved Articles</a></li>
@@ -13,17 +14,28 @@
 	</nav>
 
 	<div class="jumbotron">
-		<h1>Mongo Scraper</h1>
-	  	<p>ESPNFC EDITION</p>
+		<div>
+			<h1>Mongo Scraper</h1>
+	  		<p>ESPNFC EDITION</p>
+	  	</div>
 	</div>
 
-	<div>
+	<div class="panel panel-default outer">
+	<div class="panel-body outer">
+		<div class="panel-body">
+			<div class='well well-sm' id="no-articles">
+			No articles. Start scraping!
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- <div>
 		<div class="panel panel-default">
 			<div class="panel-body">
 				No articles
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
