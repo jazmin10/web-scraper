@@ -4,6 +4,8 @@ var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
+var PORT = process.env.PORT || 3000;
+
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
 
@@ -26,8 +28,12 @@ app.use(express.static("public"));
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Database configuration with mongoose
-mongoose.connect("mongodb://localhost/webscraper");
+// Local database configuration with mongoose
+// mongoose.connect("mongodb://localhost/webscraper");
+
+// Heroku database configuration with mongoose
+// MONGODB_URI: mongodb://heroku_6zrbp5df:ktclkc67kco9s93kgrj9597a2k@ds161493.mlab.com:61493/heroku_6zrbp5df
+mongoose.connect("mongodb://heroku_6zrbp5df:ktclkc67kco9s93kgrj9597a2k@ds161493.mlab.com:61493/heroku_6zrbp5df");
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -44,6 +50,6 @@ db.once("open", function() {
 require("./routes/api-routes.js")(app);
 
 // Listen on port 3000
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log("App running on port 3000!");
 });
