@@ -1,7 +1,6 @@
 body {
-    /*background-image: url("https://ak5.picdn.net/shutterstock/videos/511618/thumb/6.jpg?i10c=img.resize(height:160)")*/
-    background-image: url("https://w-dog.net/wallpapers/15/16/466716352306843/textures-turf-grass-green-green-wallpaper.jpg");
-    /*background: black;*/
+    /*background-image: url("https://w-dog.net/wallpapers/15/16/466716352306843/textures-turf-grass-green-green-wallpaper.jpg");*/
+    background-image: url("../images/turf.jpg");
 }
 
 /* The Modal (background) */
@@ -115,7 +114,8 @@ body {
 .jumbotron {
     margin: 0;
     padding: 0;
-    background-image: url("http://coverlayout.com/facebook/covers/soccer_players/soccer_players.jpg"); 
+    background-image: url("../images/soccer_players.jpg");
+    /*background-image: url("http://coverlayout.com/facebook/covers/soccer_players/soccer_players.jpg"); */
     /*padding: none;*/
 }
 
