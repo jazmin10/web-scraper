@@ -146,4 +146,20 @@ module.exports = function(app){
 			});
 		});
 	});
+
+	// In the event I want to delete all documents 
+	app.get("/remove-everything", function(removeReq, removeRes){
+
+		// Delete documents from the Articles collection
+		Article.remove(function(err){
+			if (err) throw err;
+			
+			// Delete documents from the Comments collection
+			Comment.remove(function(error){
+				if (error) throw error;
+
+				removeRes.send("Remove complete");
+			});
+		});
+	});
 }
