@@ -1,5 +1,6 @@
 <div class="container">
 	<h1 id="title">SOCCER<span>webscraper</span></h1>
+
 	<nav class="navbar navbar-default">
   		<div class="container-fluid">
 	    	<!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,28 +22,30 @@
 	</div>
 
 	<div class="panel panel-default outer">
-	<div class="panel-body outer">
-		{{#each articles}}
-			{{#unless this.saved}}
-				<div class="articles-panel panel panel-default" id="article-{{this._id}}">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{this.title}}</h3>
+		<div class="panel-body outer">
+			{{#each articles}}
+				{{#unless this.saved}}
+					<div class="articles-panel panel panel-default" id="article-{{this._id}}">
+
+						<div class="panel-heading">
+							<h3 class="panel-title">{{this.title}}</h3>
+
+						</div>
+
+						<div class="panel-body">
+							<a href={{this.link}} target="_blank">{{this.link}}</a>
+							<hr/>
+							<button class="btn btn-primary save-article" data-id={{this._id}}>Save Article</button>
+						</div>
 
 					</div>
-					<div class="panel-body">
-						<a href={{this.link}} target="_blank">{{this.link}}</a>
-						<hr/>
-						<button class="btn btn-primary save-article" data-id={{this._id}}>Save Article</button>
-					</div>
-				</div>
-			{{/unless}}
-		{{/each}}
-	</div>
+				{{/unless}}
+			{{/each}}
+		</div>
 	</div>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
-
   		<!-- Modal content -->
   		<div class="modal-content">
 		    <span class="close">&times;</span>

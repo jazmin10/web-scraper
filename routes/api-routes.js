@@ -1,3 +1,6 @@
+/* MongoDB - Moongoose Web Scraper
+Initialize routes */
+
 // Dependencies
 var request = require("request");
 var cheerio = require("cheerio");
@@ -6,23 +9,19 @@ var cheerio = require("cheerio");
 var Comment = require("../models/Comment.js");
 var Article = require("../models/Article.js");
 
-// function finished(createRes, counter){
-// 	console.log(counter)
-// 	createRes.end()
-// }
-
+// Export routes to server.js
 module.exports = function(app){
 
-	// Grab home page with unsaved articles
-	// /unsaved-articles
+	// Displays main page with unsaved articles
 	app.get("/", function(readReq, readRes){
 
-		// Find Articles where saved property is false
+		// Find articles that have not been saved
 		Article.find({saved: false}, function(err, unsavedDoc){
-			// console.log("new info:" + unsavedDoc);
+			// If there are no articles, render index.handlebars
 			if(unsavedDoc.length === 0){
 				readRes.render("index");
 			}
+			// If there are articles, render unsaved.handlebars
 			else {
 				var unsavedObject = {articles: unsavedDoc}
 				readRes.render("unsaved", unsavedObject);
@@ -30,30 +29,31 @@ module.exports = function(app){
 		});
 	});
 
-	// Grab saved articles
+	// Display saved articles page
 	app.get("/saved-articles", function(readReq, readRes){
 
-		// Find query where saved property is true
+		// Find articles that have been saved
 		Article.find({saved: true}, function(err, savedDoc){
+
+			// render saved.handlebars
 			var savedObject = {articles: savedDoc}
 			readRes.render("saved", savedObject);
 		});
 	});
 
-	// Route used to scrape website
+	// Scrape website for new articles and add them to the database
 	app.post("/scrape", function(createReq, createRes){
 
-		var counter = 0;
-
-		// Start scrape
+		// Request website for scraping
 		request("http://www.espnfc.us/", function(error, response, html){
 			if (error) throw err;
 
 			var $ = cheerio.load(html);
 
+			// Object that will be used to save documents into Articles collection
 			var results = {};
 
-			// Grab articles title and link
+			// Grab articles title and link from website
 			$("div [alt=' TOP STORIES '] .grid-item-content .text-content").each(function(i, element){
 				
 				// Add title and link to results object
@@ -63,19 +63,14 @@ module.exports = function(app){
 				// Create new instance of Article Model
 				var newArticle = new Article(results);
 
-				// Save Article information to database
+				// Save newArticle to database
 				newArticle.save(function(err, newDoc){
 					if (err) return;
-					counter++;
-					// console.log(counter);
 				});
 			});
-			
-			// console.log(counter);
-			// createRes.json({newArticles: counter});
 		});
-		// console.log(counter);
-		// createRes.json({newArticles: counter});
+		
+		// End the response process
 		createRes.end();
 	});
 
@@ -86,7 +81,8 @@ module.exports = function(app){
 		Article.findOneAndUpdate({_id: updateReq.params.id}, {saved: true}, {new: true})
 		.exec(function(err, savedDoc){
 
-			updateRes.json(savedDoc); // perhaps change to end
+			updateRes.json(savedDoc); 
+			// this can be updateRes.end(), but left .json() for future dev
 		});
 	});
 
@@ -97,17 +93,18 @@ module.exports = function(app){
 		Article.findOneAndUpdate({_id: updateReq.params.id}, {saved: false}, {new: true})
 		.exec(function(err, savedDoc){
 
-			updateRes.json(savedDoc); // perhaps change to end
+			updateRes.json(savedDoc);
+			// this can be updateRes.end(), but left .json() for future dev
 		});
 	});
 
 	// Add comment to an article
 	app.post("/create-comment/:id", function(createReq, createRes){
-		// console.log(typeof(JSON.parse(createReq.body)));
+		
 		// Create new instance of Comment Model
 		var newComment = new Comment(createReq.body);
 
-		// Add new comment to database
+		// Add new comment to Comments collection
 		newComment.save(function(err, newCommentDoc){
 			if (err) throw err;
 
@@ -125,7 +122,7 @@ module.exports = function(app){
 	// Grab an article's comments
 	app.get("/comments/:id", function(readReq, readRes){
 
-		// Find article by id and populate comments as well
+		// Find article by id and populate comments
 		Article.findById(readReq.params.id).populate("comments")
 		.exec(function(err, commentsDoc){
 			if (err) throw err;
@@ -139,7 +136,6 @@ module.exports = function(app){
 
 		// Find article by id and remove from Comments Collection
 		Comment.findByIdAndRemove(deleteReq.params.id).exec(function(err, removedDoc){
-			// deleteRes.json(removedDoc);
 
 			// Find article in which comment belongs to and remove from comments' list
 			Article.findOneAndUpdate({comments: {$in: [deleteReq.params.id]}}, 
@@ -147,9 +143,7 @@ module.exports = function(app){
 			.exec(function(error, pullDoc){
 				
 				deleteRes.json(pullDoc);
-			})
+			});
 		});
 	});
-
-
 }

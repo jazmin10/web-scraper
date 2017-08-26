@@ -1,3 +1,6 @@
+/* MongoDB - Moongoose Web Scraper
+Initializing express server and mongo database */
+
 // Dependencies
 var express = require("express");
 var exphbs = require("express-handlebars");
@@ -12,10 +15,7 @@ mongoose.Promise = Promise;
 // Initialize Express
 var app = express();
 
-// app.use(bodyParser.urlencoded({
-//   extended: false
-// }));
-
+// Set middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
@@ -24,7 +24,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Make public a static dir
 app.use(express.static("public"));
 
-// Set handlebars
+// Set express-handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 

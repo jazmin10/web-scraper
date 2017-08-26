@@ -1,5 +1,4 @@
 body {
-    /*background-image: url("https://w-dog.net/wallpapers/15/16/466716352306843/textures-turf-grass-green-green-wallpaper.jpg");*/
     background-image: url("../images/turf.jpg");
 }
 
@@ -27,38 +26,35 @@ body {
     border-color: #2e6da4;
 }
 
-    /*Scraping Complete Modal Content*/
-    #new-articles-number {
-        color: white;
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 1px;
-        text-align: center;
-        font-size: 20px;
-    }
+/* Scraping Complete Modal Content */
+#new-articles-number {
+    color: white;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 20px;
+}
 
-    /*Comments Modal Content*/
-    .modal-content p {
-        color: white;
-        font-family: 'Anton', sans-serif;
-        letter-spacing: 1px;
-        font-size: 20px;
-    }
-
-    .modal-content .well {
-        color: white;
-        background: black;
-        border-color: #2e6da4;
-        font-family: 'Fjalla One', sans-serif;
-        letter-spacing: 0.5px;
-    }
-
-    .add-comment {
-        background: none;
-    }
-
-    .add-comment:hover {
-        background: none;
-    }
+/* Comments Modal Content */
+.modal-content p {
+    color: white;
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+.modal-content .well {
+    color: white;
+    background: black;
+    border-color: #2e6da4;
+    font-family: 'Fjalla One', sans-serif;
+    letter-spacing: 0.5px;
+}
+.add-comment {
+    background: none;
+}
+.add-comment:hover {
+    background: none;
+}
 
 /* The Modal Close Button */
 .close {
@@ -86,7 +82,6 @@ body {
     font-size: 40px;
     letter-spacing: 1px; 
 }
-
 #title span {
     font-size: 30px;
     font-family: 'Fjalla One', sans-serif;
@@ -97,15 +92,12 @@ body {
     background-color: black;
     border-color: black;
     margin-bottom: 0px;
-    /*font-family: 'Anton', sans-serif;*/
     font-family: 'Fjalla One', sans-serif;
 }
-
 .navbar-default .navbar-nav li a {
     color: white;
     font-size: medium;
 }
-
 #scrape-btn {
     background: none;
 }
@@ -115,34 +107,24 @@ body {
     margin: 0;
     padding: 0;
     background-image: url("../images/soccer_players.jpg");
-    /*background-image: url("http://coverlayout.com/facebook/covers/soccer_players/soccer_players.jpg"); */
-    /*padding: none;*/
 }
-
 @media screen and (min-width: 768px) {
     .container .jumbotron {
         padding: 0;
     }
 }
-
 .container .jumbotron, .container-fluid .jumbotron {
     padding: 0;
 }
-
 .jumbotron div {
     background: rgba(0, 0, 0, 0.38);
     padding: 35px 0px 35px 0px;
 }
-
-
 .jumbotron h1 {
     text-align: center;
     color: white;
     font-family: 'Anton', sans-serif;
-    /*font-weight: bold;*/
-    /*text-shadow: 3px 3px black;*/
 }
-
 .jumbotron p {
     text-align: center;
     color: white;
@@ -150,7 +132,7 @@ body {
     text-shadow: 2px 2px black;
 }
 
-/*No Articles Panel*/
+/* No Articles Panel */
 #no-articles {
     background: black;
     color: white;
@@ -159,22 +141,19 @@ body {
     font-size: 20px;
 }
 
-/*Articles Panel*/
+/* Articles Panel */
 .outer {
     background: black;
     border-color: black;
 }
-
 .articles-panel {
     background-color: black;
     border-color: #2e6da4;
 }
-
 .articles-panel .panel-heading {
     background-color: black;
     border-color: #2e6da4;
 }
-
 hr {
     border-top: 0px solid black;
 }
@@ -183,7 +162,6 @@ hr {
     font-family: 'Fjalla One', sans-serif;
     letter-spacing: .5px;
 }
-
 a { 
     color: white;
 }
@@ -193,7 +171,6 @@ a {
     float: right;
     background-color: black;
 }
-
 .save-article:hover {
     float: right;
     background-color: black;
@@ -203,15 +180,12 @@ a {
 .view-comments {
     background: none;
 }
-
 .view-comments:hover {
     background: none;
 }
-
 .delete-article {
     background: none;
 }
-
 .delete-article:hover {
     background: none;
 }

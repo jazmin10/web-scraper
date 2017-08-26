@@ -1,11 +1,14 @@
+/* MongoDB - Moongoose Web Scraper
+Initializes mongoose Article model */
+
 // Require mongoose
 var mongoose = require("mongoose");
+
 // Create Schema class
 var Schema = mongoose.Schema;
 
 // Create a ArticleSchema with the Schema class
 var ArticleSchema = new Schema({
-  // name: a unique String
   title: {
     type: String,
     required: true,
@@ -24,7 +27,7 @@ var ArticleSchema = new Schema({
   comments: [{
     // Store ObjectIds in the array
     type: Schema.Types.ObjectId,
-    // The ObjectIds will refer to the ids in the Note model
+    // The ObjectIds will refer to the ids in the Comment model
     ref: "Comment"
   }]
 });
