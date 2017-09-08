@@ -1,7 +1,7 @@
 # Scraping the Web
 
 ### Overview
-
+By using mongoose and cheerio, this application allows users to leave comments on the top stories in soccer. Users can then save articles in order to leave comments. 
 
 ### Preview
 
@@ -17,8 +17,10 @@
 
 #### Saved Articles Page
   In the Saved Articles page you can comment on an article or unsave a specific article 
+  
 ![home-page](public/assets/images/savedArticlesPage.png)
 
 #### Adding/Deleting Comments
   For each article, the user has the ability to add comments and later delete them
+  
 ![scraping-preview](https://media.giphy.com/media/MDOwXwYTE86PK/giphy.gif)
